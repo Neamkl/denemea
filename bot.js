@@ -2,10 +2,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const ayarlar = require('./ayarlar.json');
 const fs = require('fs');
+require('./util/eventLoader')(client);
 
-var prefix = ayarlar.prefix; "h!"
+var prefix = ayarlar.prefix;
 
-
+const log = message => {
+  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
+};
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
@@ -70,9 +73,10 @@ client.unload = command => {
     } catch (e){
       reject(e);
     }
-  });
 };
-
+  });
+	
+	
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 // client.on('debug', e => {
 //   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
@@ -87,4 +91,3 @@ client.on('error', e => {
 });
 
 client.login(process.env.BOT_TOKEN);
-
