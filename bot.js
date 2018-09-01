@@ -3,7 +3,8 @@ const client = new Discord.Client();
 const ayarlar = require('./ayarlar.json');
 const fs = require('fs');
 
-var prefix = ayarlar.prefix;
+var prefix = ayarlar.prefix; "h!"
+
 
 
 client.commands = new Discord.Collection();
@@ -71,7 +72,6 @@ client.unload = command => {
     }
   });
 };
-
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 // client.on('debug', e => {
